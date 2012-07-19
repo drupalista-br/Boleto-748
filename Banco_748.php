@@ -16,7 +16,7 @@ class Banco_748 extends Boleto{
   /**
    * Implementation of setUp().
    */
-  private function setUp(){
+  function setUp(){
     $this->bank_name  = 'Sicredi';
   }
 
@@ -41,7 +41,7 @@ class Banco_748 extends Boleto{
    *            total (resto igual a
    *            0 ou 1 DV cai para 0)
    */
-  protected function febraban_20to44() {
+  function febraban_20to44() {
    /**
     * Read carteira_nosso_numero field.
     * format a-b-cc-d
@@ -107,6 +107,8 @@ class Banco_748 extends Boleto{
    // 44 to 44 Check Digit of febraban 20 to 43
    $cd = $this->modulo_11($this->febraban['20-44']);
    $this->febraban['20-44'] .= $cd['digito'];
+
+
  }
 
   /**

@@ -1,15 +1,13 @@
 <?php
 /**
- * @file Test example for Sicredi Bank.
- * @copyright 2012 boletophp.com.br
- * @package Boletophp
- *
+ * @file
+ * Example for Caixa Economica Bank.
  */
 
 /**
  * Include the main boleto class file.
  */
-include_once('../Boleto.class.php');
+include_once '../../Boleto.class.php';
 
 $myArguments = array(
   // Merchant's bank code (NO check digit). Note that this is not the same as
@@ -153,7 +151,8 @@ $myArguments = array(
 
 // Instantiate an object and send the array of arguments through.
 $myBoleto = Boleto::load_boleto($myArguments);
-
+// You probably wont need to set this in a real life production enviroment
+$myBoleto->settingsPropertySetter(array('file_location' => '../'));
 
 // You can change stuff around like this:
 // $myBoleto->settings['bank_logo']  = 'path-to-logo/logo.jpg';
