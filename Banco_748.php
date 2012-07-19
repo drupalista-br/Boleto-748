@@ -3,13 +3,7 @@
  * This code is released under the GNU General Public License.
  * See COPYRIGHT.txt and LICENSE.txt.
  *
- * This library is built based on Boletophp v0.17
- * Many thanks to the mantainers and collaborators of Boletophp project at boletophp.com.br.
- * 
- * @file Implementation of Bank 748 - Sicredi
- * @copyright 2012 boletophp.com.br
- * @package Boletophp
- *    
+ * @author Francisco Luz <franciscoferreiraluz@yahoo.com.au>
  */
 
 class Banco_748 extends Boleto{
