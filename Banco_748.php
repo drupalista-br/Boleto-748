@@ -66,10 +66,10 @@ class Banco_748 extends Boleto{
     // Get values to mount the base number to calculate the check digit for Nosso
     // Numero.
     $agencia = $this->arguments['agencia'];
-    $posto_cooperativa = $this->computed['carteira_nosso_numero'][2];
+    $posto_cooperativa = (isset($this->computed['carteira_nosso_numero'][2])) ? $this->computed['carteira_nosso_numero'][2] : '';
     $conta = $this->computed['conta'];
     $ano = date("y");
-    $indicador_geracao = $this->computed['carteira_nosso_numero'][3];
+    $indicador_geracao = isset($this->computed['carteira_nosso_numero'][3]) ? $this->computed['carteira_nosso_numero'][3] : '';
     $nosso_numero = str_pad($this->arguments['nosso_numero'], 5, 0, STR_PAD_LEFT);
    
     $cd_base = $agencia . $posto_cooperativa . $conta . $ano . $indicador_geracao . $nosso_numero;
@@ -80,7 +80,7 @@ class Banco_748 extends Boleto{
     $this->computed['nosso_numero'] = "$ano/$indicador_geracao" . "$nosso_numero-" . $cd['digito'];
    
     // 20 to 21 tipo de cobrança and tipo de carteira.
-    $this->febraban['20-44'] = $cnn[0].$cnn[1];
+    $this->febraban['20-44'] = (isset($cnn[0]) && isset($cnn[1])) ? $cnn[0] . $cnn[1] : '';
  
     // 22 to 30 Nosso Numero.
     $this->febraban['20-44'] .= $ano . $indicador_geracao . $nosso_numero . $cd['digito'];
@@ -89,7 +89,7 @@ class Banco_748 extends Boleto{
     $this->febraban['20-44'] .= $this->arguments['agencia']; 
  
     // 35 to 36 Posto da cooperativa cedente.
-    $this->febraban['20-44'] .= $cnn[2];
+    $this->febraban['20-44'] .= (isset($cnn[2])) ? $cnn[2] : '';
    
     // 37 to 41 Código do cedente (Numero da conta do cedente sem o digito
     // verificador)
